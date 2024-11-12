@@ -74,7 +74,7 @@ const listItem = computed(() => {
 </template>
 
 <style lang="scss" module>
-@use '@/assets//scss/mixin' as *;
+@use '@/assets/scss/mixin' as *;
 
 .list {
   --list-gap        : var(--sp-large);
@@ -82,25 +82,25 @@ const listItem = computed(() => {
   grid-template-rows: 1fr;
   gap               : var(--list-gap);
   width             : 100%;
-
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
-
+    
     to {
       opacity: 1;
     }
   }
-
+  
   @include media('mobile') {
     grid-template-columns : repeat(auto-fit, 100%);
   }
-
+  
   @include media('tablet') {
     grid-template-columns : repeat(auto-fit, calc((100% - var(--list-gap) * (var(--tablet-column-number) - 1)) / var(--tablet-column-number)));
   }
-
+  
   @include media('desktop') {
     grid-template-columns : repeat(auto-fit, calc((100% - var(--list-gap) * (var(--column-number) - 1)) / var(--column-number)));
   }
