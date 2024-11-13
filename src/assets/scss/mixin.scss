@@ -13,7 +13,7 @@
   fill      : $color;
 }
 
-$tabletLowerWidth: 576px;
+$tabletLowerWidth : 576px;
 $desktopLowerWidth: 992px;
 $contentsMaxWidth : 1200px;
 
@@ -26,3 +26,8 @@ $contentsMaxWidth : 1200px;
     @container (#{$desktopLowerWidth} <= width) { @content; }
   }
 }
+
+
+
+
+

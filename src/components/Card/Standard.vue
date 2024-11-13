@@ -139,7 +139,7 @@ const props = defineProps<{
           background-image: linear-gradient(
             to bottom,
             rgba(255, 255, 255, 0) 38%,
-            rgba(255, 255, 255, .9) 100%,
+            rgba(255, 255, 255, .9) 100%
           );
         }
       }

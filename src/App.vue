@@ -5,8 +5,18 @@ import type {
 } from '@/types'
 import { ref } from 'vue'
 import StandardList from '@/components/List/Standard.vue'
+import RoundedList from '@/components/List/Rounded.vue'
+import ArtisticList from '@/components/List/Artistic.vue'
+import TileList from '@/components/List/Tile.vue'
+import SimpleList from '@/components/List/Simple.vue'
+import RowList from '@/components/List/Row.vue'
+import NewsList from '@/components/List/News.vue'
+import EntertainmentList from '@/components/List/Entertainment.vue'
+import GalleryList from '@/components/List/Gallery.vue'
+import GridList from '@/components/List/Grid.vue'
 
-const WP_URL = 'https://geckou.wp.xdomain.jp/stewp/wp-json/wp/v2/posts'
+
+const WP_URL = 'https://geckou.wp.xdomain.jp/stewp/wp-json/wp/v2/posts?_embed'
 
 const SETTINGS: ListSettings = {
   domainToUse: 'geckou.wp.xdomain.jp',
@@ -32,17 +42,18 @@ const fetchPosts = async () => {
   const res = await fetch(WP_URL, { method: 'GET' })
   if (!res.ok) throw new Error('Failed to fetch posts')
   articles.value = await res.json()
-  console.log(articles.value)
+  console.log(`Appのarticles`,articles.value)
 }
 
 await fetchPosts()
 </script>
 
 <template>
-  <div>
+  <div :class="$style.contents">
     <Suspense>
       <template #default>
-        <StandardList
+        <!-- ↓↓現状GridListの時だけ、:columnNumber="3"が必要になります ↓↓-->
+        <GalleryList
           :articles="articles"
           :settings="SETTINGS"
           :categories="CATEGORIES"
