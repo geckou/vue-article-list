@@ -1,12 +1,21 @@
 <script setup lang="ts">
+
 import type {
   Category,
   ListSettings,
 } from '@/types'
 import { computed } from 'vue'
 import { returnArticlePath } from '@/scripts/utils'
-import StandardCard from '@/components/Card/Standard.vue'
 import { LIST_THEME } from '@/const/list-theme'
+import StandardCard from '@/components/Card/Standard.vue'
+import RoundedCard from '@/components/Card/Rounded.vue'
+import ArtisticCard from '@/components/Card/Artistic.vue'
+import TileCard from '@/components/Card/Tile.vue'
+import SimpleCard from '@/components/Card/Simple.vue'
+import RowCard from '@/components/Card/Row.vue'
+import NewsCard from '@/components/Card/News.vue'
+import EntertainmentCard from '@/components/Card/Entertainment.vue'
+import GalleryCard from '@/components/Card/Gallery.vue'
 
 const props = defineProps<{
   articles: any[]
@@ -26,22 +35,22 @@ const listItem = computed(() => {
   switch (props.theme) {
     case 'standard':
       return StandardCard
-    // case 'rounded':
-    //   return RoundedItem
-    // case 'artistic':
-    //   return ArtisticItem
-    // case 'tile':
-    //   return TileItem
-    // case 'simple':
-    //   return SimpleItem
-    // case 'row':
-    //   return RowItem
-    // case 'news':
-    //   return NewsItem
-    // case 'gallery':
-    //   return GalleryItem
-    // case 'entertainment':
-    //   return EntertainmentItem
+    case 'rounded':
+      return RoundedCard
+    case 'artistic':
+      return ArtisticCard
+    case 'tile':
+      return TileCard
+    case 'simple':
+      return SimpleCard
+    case 'row':
+      return RowCard
+    case 'news':
+      return NewsCard
+    case 'gallery':
+      return GalleryCard
+    case 'entertainment':
+      return EntertainmentCard
     default:
       return StandardCard
   }
@@ -74,7 +83,7 @@ const listItem = computed(() => {
 </template>
 
 <style lang="scss" module>
-@use '@/assets//scss/mixin' as *;
+@use '@/assets/scss/mixin' as *;
 
 .list {
   --list-gap        : var(--sp-large);
@@ -82,25 +91,25 @@ const listItem = computed(() => {
   grid-template-rows: 1fr;
   gap               : var(--list-gap);
   width             : 100%;
-
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
-
+    
     to {
       opacity: 1;
     }
   }
-
+  
   @include media('mobile') {
     grid-template-columns : repeat(auto-fit, 100%);
   }
-
+  
   @include media('tablet') {
     grid-template-columns : repeat(auto-fit, calc((100% - var(--list-gap) * (var(--tablet-column-number) - 1)) / var(--tablet-column-number)));
   }
-
+  
   @include media('desktop') {
     grid-template-columns : repeat(auto-fit, calc((100% - var(--list-gap) * (var(--column-number) - 1)) / var(--column-number)));
   }

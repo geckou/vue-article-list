@@ -13,9 +13,9 @@ const props = defineProps<{
 </script>
 
 <template>
-    <GenericArticleList
-    theme="rounded"
-    :columnNumber="3"
+  <GenericArticleList
+    theme="row"
+    :columnNumber="1"
     :articles="articles"
     :categories="categories"
     :settings="settings"
