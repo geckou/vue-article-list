@@ -15,7 +15,6 @@ import EntertainmentList from '@/components/List/Entertainment.vue'
 import GalleryList from '@/components/List/Gallery.vue'
 import GridList from '@/components/List/Grid.vue'
 
-
 const WP_URL = 'https://geckou.wp.xdomain.jp/stewp/wp-json/wp/v2/posts?_embed'
 
 const SETTINGS: ListSettings = {
@@ -42,7 +41,6 @@ const fetchPosts = async () => {
   const res = await fetch(WP_URL, { method: 'GET' })
   if (!res.ok) throw new Error('Failed to fetch posts')
   articles.value = await res.json()
-  console.log(`Appのarticles`,articles.value)
 }
 
 await fetchPosts()
@@ -53,7 +51,7 @@ await fetchPosts()
     <Suspense>
       <template #default>
         <!-- ↓↓現状GridListの時だけ、:columnNumber="3"が必要になります ↓↓-->
-        <GalleryList
+        <StandardList
           :articles="articles"
           :settings="SETTINGS"
           :categories="CATEGORIES"
